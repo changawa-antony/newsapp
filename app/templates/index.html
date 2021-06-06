@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> Get latest news</title>
+        {% endif %}
+    </head>
+
+    <body>
+        <!-- Popular movie -->
+        <h3> Popular Movies</h3>
+        <ul>
+            {{latest_news}}
+        </ul>
+    </body>
+</html>
