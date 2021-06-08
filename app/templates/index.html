@@ -12,22 +12,33 @@
     {% block content %}
     <div class="container-fluid">
 
+        <div class="jumbotron jumbotron-fluid text-center">
+            <div class="container">
+              <h1 class="display-4">News just in...</h1>
+              <p class="lead">Read all news from around the world</p>
+            </div>
+          </div>
+
         <div class="container article">
             {% for des, news, i, pub, url in data %}
+            <div class="content-wrapper">
+
                 <div class="image">
                     <img src="{{i}}" alt="">
                 </div>
 
                 <div class="news-details">
-                    <p><span>News: </span>{{news}}</p>
-                    <p><span>Description: </span>{{des}}</p>
+                    <p class="headline">{{news}}</p>
+                    <p><span>{{des}}</p>
+                    <hr>
                     <p><span>Published on: </span>{{pub}}</p>
-                    <a href="{{url}}">Read more</a>
+                    <a href="{{url}}" target="_blank">Read more</a>
 
                 </div>
+
+            </div>
                 
                 
-    
             {% endfor %}
         </div>
 
