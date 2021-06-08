@@ -1,6 +1,6 @@
 from flask import render_template
-from app import app
 from .request import get_news
+from app import app
 
 # Views
 @app.route('/')
@@ -11,5 +11,5 @@ def index():
     '''
 
     # Getting popular movie
-    latest_news = get_news()
-    return render_template('index.html',latest_news=latest_news)
+    data = get_news()
+    return render_template('index.html', data = data)

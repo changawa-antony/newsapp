@@ -1,42 +1,31 @@
-from app import app
-import urllib.request,json
-from .models import news
+from instance import config
+from newsapi import NewsApiClient
 
-# Getting api key
-api_key = app.config['NEWS_API_KEY']
-News = news.News
-
-# Getting the news
-base_url = app.config["NEWS_API_BASE_URL"]
+my_api_key = config.api_key
 
 def get_news():
-    '''
-    Getting json response to the API
-    '''
-    get_news_url = base_url.format(api_key)
 
-    with urllib.request.urlopen(get_news_url) as url:
-        get_news_data = url.read().decode("utf8", 'ignore')
-        get_news_response = json.loads(get_news_data)
+    newsapi = NewsApiClient(my_api_key)
+    topheadlines = newsapi.get_top_headlines(sources="al-jazeera-english")
 
-        news_results = get_news_response
+    articles = topheadlines['articles']
 
-    return news_results
+    desc = []
+    news = []
+    img = []
+    url = []
+    pub =[]
 
+    for i in range(len(articles)):
+        myarticles = articles[i]
 
-def process_results(news_list):
-    '''
-    Transforms the results to an object
-    '''
-    news_results = []
-    for news_item in news_list:
-        author = news_item.get('author')
-        title = news_item.get('title')
-        description = news_item.get('description')
-        url = news_item.get('url')
-        publishedAt = news_item.get('publishedAt')
+        news.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        url.append(myarticles['url'])
+        pub.append(myarticles['publishedAt'])
+    
+        
+    mylist = zip(desc, news, img, pub,url)
 
-        news_object = News(author,title,description,url,publishedAt)
-        news_results.append(news_object)
-
-    return news_results
+    return mylist

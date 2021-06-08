@@ -1,10 +1,9 @@
 class News:
     '''
-    Movie class to define Movie Objects
+    News class to define news Objects
     '''
-    def __init__(self,author,title,description,url,publishedAt):
-        self.author =author
-        self.title = title
-        self.description = description
-        self.url = url
-        self.publishedAt = publishedAt
+    def __init__(self,news, desc, img):
+        self.news = news
+        self.desc = desc
+        self.img = img
+        

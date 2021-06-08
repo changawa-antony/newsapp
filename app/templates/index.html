@@ -11,9 +11,18 @@
 
     <body>
         <!-- Popular movie -->
-        <h3> Popular Movies</h3>
-        <ul>
-            {{latest_news}}
-        </ul>
+        <h3> News </h3>
+
+        {% for des, news, i, pub, url in data %}
+
+        <img src="{{i}}" alt="">
+        <p><span>News: </span>{{news}}</p>
+        <p><span>Description: </span>{{des}}</p>
+        <p><span>Published on: </span>{{pub}}</p>
+        <a href="{{url}}">Read more</a>
+    
+    
+        {% endfor %}
+        
     </body>
 </html>
