@@ -1,17 +1,42 @@
 {% extends 'base.html'%}
 
-{% block content %}
+<!-- Styles block -->
 
-    {% for des, news, i, pub, url in data %}
-
-        <img src="{{i}}" alt="">
-        <p><span>News: </span>{{news}}</p>
-        <p><span>Description: </span>{{des}}</p>
-        <p><span>Published on: </span>{{pub}}</p>
-        <a href="{{url}}">Read more</a>
-
-    {% endfor %}
-
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
 {% endblock %}
+
+
+
+    {% block content %}
+    <div class="container-fluid">
+
+        <div class="container article">
+            {% for des, news, i, pub, url in data %}
+                <div class="image">
+                    <img src="{{i}}" alt="">
+                </div>
+
+                <div class="news-details">
+                    <p><span>News: </span>{{news}}</p>
+                    <p><span>Description: </span>{{des}}</p>
+                    <p><span>Published on: </span>{{pub}}</p>
+                    <a href="{{url}}">Read more</a>
+
+                </div>
+                
+                
+    
+            {% endfor %}
+        </div>
+
+        
+    </div>
+    
+    {% endblock %}
+
+
+
 
 
