@@ -7,45 +7,73 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
 {% endblock %}
 
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        </div>
+    </nav>
+
+{% endblock %}
 
 
-    {% block content %}
-    <div class="container-fluid">
 
-        <div class="jumbotron jumbotron-fluid text-center">
-            <div class="container">
-              <h1 class="display-4">News just in...</h1>
-              <p class="lead">Read all news from around the world</p>
-            </div>
-          </div>
+{% block content %}
+<div class="container-fluid">
 
-        <div class="container article">
-            {% for des, news, i, pub, url in data %}
-            <div class="content-wrapper">
-
-                <div class="image">
-                    <img src="{{i}}" alt="">
-                </div>
-
-                <div class="news-details">
-                    <p class="headline">{{news}}</p>
-                    <p><span>{{des}}</p>
-                    <hr>
-                    <p><span>Published on: </span>{{pub}}</p>
-                    <a href="{{url}}" target="_blank">Read more</a>
-
-                </div>
-
-            </div>
-                
-                
-            {% endfor %}
+    <div class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <h1 class="display-4">News just in...</h1>
+            <p class="lead">Read all news from around the world</p>
+        </div>
         </div>
 
-        
+    <div class="container article">
+        {% for des, news, i, pub, url in data %}
+        <div class="content-wrapper">
+
+            <div class="image">
+                <img src="{{i}}" alt="">
+            </div>
+
+            <div class="news-details">
+                <p class="headline">{{news}}</p>
+                <p><span>{{des}}</p>
+                <hr>
+                <p><span>Published on: </span>{{pub}}</p>
+                <a href="{{url}}" target="_blank">Read more...</a>
+
+            </div>
+
+        </div>
+            
+            
+        {% endfor %}
     </div>
+
     
-    {% endblock %}
+</div>
+
+{% endblock %}
 
 
 
