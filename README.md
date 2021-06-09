@@ -1,4 +1,4 @@
-# Daily Quotes
+# Newsapp
 ## Description
 A news app for displaying and current news from the newsapi platform
 
